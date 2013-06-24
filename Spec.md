@@ -11,12 +11,16 @@ This benchmark should be conducted for a maximum of 0x1000 trials.
 
 The benchmark for a library must be equivalent to the code below. The load time is recorded as the time taken to complete the entire sequence as shown below.
 
-    NXFile file = new NXFile("/path/to/file");
-    // ... methods to load file
+```csharp
+NXFile file = new NXFile("/path/to/file");
+// ... methods to load file
+```
 
 After the end of the load, any node must be accessible and its value retrieved without any further method calls. For example, the following expression, or its equivalent, must result in `true`.
 
-    file.BaseNode["String"]["Map.img"]["victoria"]["100000000"]["mapName"] == "Henesys"
+```csharp
+file.BaseNode["String"]["Map.img"]["victoria"]["100000000"]["mapName"] == "Henesys"
+```
 
 ###Recurse (Re)
 This benchmark measures the time taken to recurse every node in a loaded and parsed file.
@@ -25,11 +29,13 @@ This benchmark should be conducted for a maximum of 0x100 trials.
 
 The benchmark for a library must be equivalent to the code below. The recurse time is recorded as the time taken to complete the entire sequence as shown below.
 
-    RecurseHelper(file.BaseNode);
-    
-    static void RecurseHelper(NXNode n) {
-        foreach (NXNode m in n) RecurseHelper(m);
-    }
+```csharp
+RecurseHelper(file.BaseNode);
+
+static void RecurseHelper(NXNode n) {
+    foreach (NXNode m in n) RecurseHelper(m);
+}
+```
 
 ...where `file` is a loaded and parsed NX file.
 
@@ -40,9 +46,11 @@ This benchmark should be conducted for a maximum of 0x100 trials.
 
 The benchmark for a library must be equivalent to the code below. The load and recurse time is recorded as the time taken to complete the entire sequence as shown below.
 
-    NXFile file = new NXFile("/path/to/file");
-    // ... methods to load file
-    RecurseHelper(file.BaseNode);
+```csharp
+NXFile file = new NXFile("/path/to/file");
+// ... methods to load file
+RecurseHelper(file.BaseNode);
+```
 
 ...where `RecurseHelper` is the same method from the _Re_ benchmark above.
 
@@ -53,13 +61,15 @@ This benchmark should be conducted for a maximum of 0x100 trials.
 
 The benchmark for a library must be equivalent to the code below. The search all time is recorded as the time taken to complete the entire sequence as shown below.
 
-    StringRecurseHelper(file.BaseNode);
-    
-    static void StringRecurseHelper(NXNode n) {
-        foreach (NXNode m in n) 
-            if (n[m.Name] == m) StringRecurseHelper(m);
-            else throw new Exception("Fail!");
-    }
+```csharp
+StringRecurseHelper(file.BaseNode);
+
+static void StringRecurseHelper(NXNode n) {
+    foreach (NXNode m in n) 
+        if (n[m.Name] == m) StringRecurseHelper(m);
+        else throw new Exception("Fail!");
+}
+```
 
 ###Decompress All (De)
 This benchmark measures the time to decompress every bitmap in the file. All loading and parsing can be completed before this benchmark is run, but no bitmaps should be decompressed before this benchmark is run.
@@ -68,14 +78,16 @@ This benchmark should be conducted for a maximum of 0x100 trials.
 
 The benchmark for a library must be equivalent to the code below. The decompress all time is recorded as the time taken to complete the entire sequence as shown below.
 
-    DecompressHelper(file.BaseNode);
-    
-    static void DecompressHelper(NXNode n)
-    {
-        NXBitmapNode b = n as NXBitmapNode;
-        if (b != null) { Bitmap x = b.Value; }
-        foreach (NXNode m in n) ReNXDecompressHelper(m);   
-    }
+```csharp
+DecompressHelper(file.BaseNode);
+
+static void DecompressHelper(NXNode n)
+{
+    NXBitmapNode b = n as NXBitmapNode;
+    if (b != null) { Bitmap x = b.Value; }
+    foreach (NXNode m in n) ReNXDecompressHelper(m);   
+}
+```
 
 
 *Note that this code will result in memory leaks in reNX! The bitmaps must be disposed later on.*
@@ -94,12 +106,14 @@ The official benchmark tables will require library benchmarks to report the foll
 
 Benchmarks must output the benchmark results in the following format to `stdout`.
 
-    Name\t75%t\tM50%\tBest
-    Ld\t123\t456\t789
-    Re\t123\t456\t789
-    LR\t123\t456\t789
-    SA\t123\t456\t789
-    De\t123\t456\t789
+```
+Name\t75%t\tM50%\tBest
+Ld\t123\t456\t789
+Re\t123\t456\t789
+LR\t123\t456\t789
+SA\t123\t456\t789
+De\t123\t456\t789
+```
 
 ...where `\t` represents the `TAB` character.
 
