@@ -1,0 +1,22 @@
+[submodule "benchmarks/reNX-reWZ-MapleLib/reWZ"]
+	path = benchmarks/reNX-reWZ-MapleLib/reWZ
+	url = https://github.com/angelsl/ms-reWZ.git
+[submodule "benchmarks/reNX-reWZ-MapleLib/reNX"]
+	path = benchmarks/reNX-reWZ-MapleLib/reNX
+	url = https://github.com/angelsl/ms-reNX.git
+[submodule "benchmarks/reNX.cpp"]
+	path = benchmarks/reNX.cpp
+	url = https://github.com/angelsl/ms-reNX.cpp.git
+[submodule "benchmarks/NoLifeNx"]
+	path = benchmarks/NoLifeNx
+	url = https://github.com/NoLifeDev/NoLifeNxBench.git
+[submodule "benchmarks/NoLifeNx/NoLifeNx"]
+	path = benchmarks/NoLifeNx/NoLifeNx
+	url = https://github.com/NoLifeDev/NoLifeNx.git
+[submodule "benchmarks/pkgnx"]
+	path = benchmarks/pkgnx
+	url = https://github.com/aaronweiss74/pkgnx.git
+[submodule "benchmarks/nx-pkg4"]
+	path = benchmarks/nx-pkg4
+	url = https://github.com/strax/nx-pkg4.git
+    
