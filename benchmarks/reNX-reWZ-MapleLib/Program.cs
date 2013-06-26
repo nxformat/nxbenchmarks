@@ -77,7 +77,7 @@ namespace NETNXBench {
             if (prepare != null) prepare();
             for (uint i = 0; i < trials;) {
                 for (uint j = 0; j < step && i < trials; ++j, ++i) tickres[i] = c();
-                SnapWrite("{0,2:G}: {1,4}/{2,-4}; C{3,8} B{4,8}", t, i + 1, trials, "N/A", "N/A");
+                SnapWrite("{0,2:G}: {1,4}/{2,-4}; C{3,8} B{4,8}", t, i, trials, "N/A", "N/A");
             }
             if (postpare != null) postpare();
             Array.Sort(tickres);
