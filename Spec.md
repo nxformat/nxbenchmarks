@@ -100,7 +100,7 @@ Benchmark results must be recorded in microseconds, using the appropriate method
 
 The official benchmark tables will require library benchmarks to report the following 3 values for each benchmark. The descriptions assume that the array has been sorted in ascending order; `/` indicates integer division.
 
- * 75th percentile: element at index `length * 3 / 4`.
+ * 75th percentile: element at index `length / 4`.
  * 50% mean: the mean of the slice from `length / 4` to `length * 3 / 4`, inclusive.
  * Best: element at index `0`.
 
